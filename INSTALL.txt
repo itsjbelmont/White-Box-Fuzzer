@@ -1,0 +1,87 @@
+This file describes how to install our white box fuzzer into IntelliJ IDE to be run.
+
+Due to issues with our group15 BitBucket, we discussed with Prachi Shukla, and the working implentation should be downloaded from this BitBucket directory instead. 
+<https://agile.bu.edu/bitbucket/scm/~jbelmont/whiteboxfuzzergroup15_backup.git>
+
+	- Something went wrong with the packages in the group15
+		repository and we were unable to solve it with
+		the remaining time before the deadline. We discussed
+		with Prachi Shukla who also could not solve our
+		issue and thus we decided to simply create 
+		another repo and link you to it. We apologize for the
+		inconvinience.
+		
+		
+Pre-Conditions:
+	Maven must be installed.
+	Code will run on any hardware and operating system with Java 8 installed. Although it is possible to compile and run the code through the command line, it is suggested that you do this via an IDE. You will need internet connections to set up the library dependency. We will provide information on how to do this all down below. 
+	
+	
+Supporting Files:
+
+This code relies on the JavaParser Symbol Solver to create an abstract syntax tree. We use JavaParser's abstract syntax tree to extract the This is an open source 3rd party library hosted on github and can be installed into our program via a maven dependency. Further explanation on how to do this will be provided below in Execution. If you would like more info on this library their website can be found here: <https://javaparser.org/> 
+
+We have included in our repository a sub-directory called testFiles that contains a test bed of files that contain vulnerabilities similar to what we will need to solve.
+
+Unit Tests:
+Although durring our code production we performed unit tests to determine the accuracy of our code segments before proceeding. Although we tested our code periodically we have sadly forgotten to include specific unit test functions for you to try out. 
+One thing that might prove interesting for you is to look at the source code for InputGenerator.java and put a breakpoint at line 27 ( argTypes = parser.FindArgType(); ). Then run the debugger. The program execution will stop at this point, which is immediatly after the Abstract Syntax Tree was made. Here we can look at the structure of the tree. In the debugger window, click on 'parser' to expand it, then click on 'cu'. cu is the root of the tree. You can then click on the child nodes and traverse the tree to see its structure, and how the code gradually gets split into smaller and smaller chunks. 
+We also have a function that displays most of the information that we parsed out of the file. This function can be found commented out in Fuzzer.java on line 109 ( //inputGenerator.displayParsedFileInfo(); ) If you uncomment this line, you will be able to see our parsed information get printed in the IntelliJ terminal window.  This function is the cummulative result of testing the individual units.
+
+System Tests:
+We tested our system with a test bed of files that we created with specific vulnerabilities. We have provided a subset of these files for you to use/test in the testFiles sub-directory. We have chosen a subset of files that we felt accurately and clearly displayed the vulnerabilities that we can exploit and how our code can enter certain conditional statements. 
+
+Execution:
+
+(1) Follow this link ( https://agile.bu.edu/bitbucket/scm/~jbelmont/whiteboxfuzzergroup15_backup.git ) to the bitbucket repository where our downloadable code is hosted. Clone the repository by copying the repo link.
+
+(2) Open terminal and navigate to directory where you want our code to be installed. Type in 'git clone repoCloneLink' and type in your credentials to access the code. This will put all of our code into a directory called 'whiteboxfuzzergroup15_backup'
+
+(3) Open IntelliJ (in terminal this is done with 'IntelliJ &')
+
+(4) Click 'File' -> 'Open'
+	Select the 'whiteboxfuzzergroup15_backup' directory 
+	click 'OK'
+	
+(5) Click on the Project Structure button in the upper right corner of the IntelliJ GUI (Looks like a file with blue dots).
+
+(6) In the left hand menu click on 'Modules'
+
+(7) In the 'Modules' window click on 'Dependencies'. On the right there will be a green plus sign. Click it, then click 'Library...' -> 'From Maven...'
+
+(8) In the search box that pops up type in 'com.github.javaparser:javaparser-symbol-solver-core:3.6.3' Give IntelliJ a second to load as maven finds the library.
+
+(9) Before selecting OK click on the check box for 'Download to:'. Once clicked, you can click on 'OK'.
+
+(10) Click on 'OK' again.
+
+(11) Click on the check box under Export next to the com.github.javaparser:javaparser-symbol-solver-core:3.6.3 library
+
+(12) Click 'Apply' then click 'OK'
+
+(13) Click on the Edit configurations button. Click the green plus in the upper left corner and select 'Application'
+
+(14) In the 'Main Class' click the '...' button and select 'Main (bu.ec504.group15.fuzzer) WhiteBoxFuzzerGroup15_Backup'. Then click 'OK'
+
+(15) Click on 'Apply' and then 'OK'
+
+(16) Run the code by clicking on the green play button in the upper right corner. This will bring up a very simple GUI for the fuzzer. It is recommended that you expand the GUI to be larger so
+parts of it dont get cut off.
+
+(17) Click on the 'Select File' button and navigate through the file system to find the java file that you want to fuzz. If you navigate to the project directory, there is a subdirectory called 'testFiles' that contains a test-bed of simple files with vulnerabilities. After you have selected a file, click 'Open' and then click on 'Run Fuzzer'
+
+(18) Wait until the 'Run Fuzzer' program returns an error or has been successfully fuzzed (takes a maximum of 5 minutes before determining success) Note that if the fuzzer returns success, this does not necessarily mean that no Bugs exist, but rather that the bugs were not found. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
