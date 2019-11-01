@@ -5,13 +5,6 @@
 Many programs take in user inputs. To maintain code quality and security, the programmer might want to know whether or not a program could possibly fail given certain inputs. There are two main types of fuzzers. A blackbox fuzzer, like the name suggests, treats the source file as a blackbox. Without looking at the contents of the program, the inputs are simply randomly generated. Whitebox fuzzing, on the other hand, looks at the source code, and the outputs produced by the code, then tries to intelligently formulate inputs. 
 Smart generational models for generating testing inputs is still an open area of research. The consideration of the trade off between the time spent testing the program versus generating smart inputs for program is highly context driven. <br/>
 
-## A quick heads up
-YOU ARE AT THE WORKING CODE REPOSITORY FOR THIS PROJECT! <https://agile.bu.edu/bitbucket/scm/~jbelmont/whiteboxfuzzergroup15_backup.git>
-
-Group project directory at: <https://agile.bu.edu/bitbucket/projects/EC504PROJ/repos/group15/browse>
-
-We apologize again for the inconvenience of redirecting you to this repository for working code, but we talked with Prachi Shukla and this was the best we could come up with at the last minute. 
-
 ## Our Team
 Jack Belmont:
 * Class Year: Junior - Undergraduate
