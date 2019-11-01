@@ -69,7 +69,7 @@ We can then create classes called visitors that traverse through the AST and sto
 For example we can write a visitor that stops at every single If-statement, and extracts the conditional expression that alters the control flow at that statement. 
 If you would like to understand more about AST's, this wikipedia article sums them up well: https://en.wikipedia.org/wiki/Abstract_syntax_tree 
 
-##OurClasses
+## OurClasses
 ### FileParser.java && InputGenerator.java
 The FileParser begins by constructing an abstract syntax tree through the use of the JavaParser Library.
 We are then able to use visitors that go through the tree to extract fields such as expressions and literals. <br/>
